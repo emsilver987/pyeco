@@ -1,5 +1,8 @@
 #!/bin/bash
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/../_common/python_env.sh"
+
 # Function to detect Linux distribution
 detect_distro() {
     if [ -f /etc/os-release ]; then
@@ -55,12 +58,9 @@ case $DISTRO in
         ;;
 esac
 
-python3.12 -m venv venv
-source venv/bin/activate
-
 export VLLM_USE_CUSTOM_OPS=0
 
-pip install --no-cache --prefer-binary --extra-index-url https://wheels.developerfirst.ibm.com/ppc64le/linux -r requirements.txt
+setup_python312_venv requirements.txt --no-cache --prefer-binary --extra-index-url https://wheels.developerfirst.ibm.com/ppc64le/linux
 
 python vllm_example.py
 

@@ -1,20 +1,9 @@
 #!/bin/bash
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/../_common/distro_utils.sh"
 
-# Function to detect Linux distribution
-detect_distro() {
-    if [ -f /etc/os-release ]; then
-        . /etc/os-release
-        echo $ID
-    elif [ -f /etc/redhat-release ]; then
-        echo "rhel"
-    elif [ -f /etc/debian_version ]; then
-        echo "debian"
-    else
-        echo "unknown"
-    fi
-}
+init_distro_context
 
-DISTRO=$(detect_distro)
 
 case $DISTRO in
     "fedora"|"rhel"|"centos"|"rocky"|"almalinux")

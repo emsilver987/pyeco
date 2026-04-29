@@ -1,25 +1,11 @@
 #!/bin/bash
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/../_common/distro_utils.sh"
+
+init_distro_context
+
 set -e
-
-# -------------------------------
-# Function to detect Linux distro
-# -------------------------------
-detect_distro() {
-    if [ -f /etc/os-release ]; then
-        . /etc/os-release
-        echo $ID
-    elif [ -f /etc/redhat-release ]; then
-        echo "rhel"
-    elif [ -f /etc/debian_version ]; then
-        echo "debian"
-    else
-        echo "unknown"
-    fi
-}
-
-DISTRO=$(detect_distro)
-echo "Detected distribution: $DISTRO"
-echo "Installing prerequisites..."
 
 # -------------------------------
 # Install system dependencies

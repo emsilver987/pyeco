@@ -1,21 +1,10 @@
 #!/bin/bash
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/../_common/distro_utils.sh"
 
-# Function to detect Linux distribution
-detect_distro() {
-    if [ -f /etc/os-release ]; then
-        . /etc/os-release
-        echo $ID
-    elif [ -f /etc/redhat-release ]; then
-        echo "rhel"
-    elif [ -f /etc/debian_version ]; then
-        echo "debian"
-    else
-        echo "unknown"
-    fi
-}
+init_distro_context
 
 # Install system dependencies based on distribution
-DISTRO=$(detect_distro)
 
 case $DISTRO in
     "fedora"|"rhel"|"centos"|"rocky"|"almalinux")
@@ -62,4 +51,3 @@ python3.12 sub-test2.py
 
 printf "\nRunning sub-test3.py\n"
 python3.12 sub-test3.py
-

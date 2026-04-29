@@ -60,7 +60,7 @@ esac
 
 export VLLM_USE_CUSTOM_OPS=0
 
-setup_python312_venv requirements.txt --no-cache --prefer-binary --extra-index-url https://wheels.developerfirst.ibm.com/ppc64le/linux
+setup_python312_venv requirements.txt --no-cache --prefer-binary
 
 python vllm_example.py
 

@@ -48,8 +48,7 @@ esac
 SETUP_PYTHON312_UPGRADE_PIP=1 setup_python312_venv \
     requirements.txt \
     --no-cache \
-    --prefer-binary \
-    --extra-index-url https://wheels.developerfirst.ibm.com/ppc64le/linux
+    --prefer-binary
 
 # ----------------------------------------
 # Add ollama binary to PATH

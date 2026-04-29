@@ -45,7 +45,7 @@ case $DISTRO in
         ;;
 esac
 
-setup_python312_venv requirements.txt --no-cache --prefer-binary --extra-index-url https://wheels.developerfirst.ibm.com/ppc64le/linux
+setup_python312_venv requirements.txt --no-cache --prefer-binary
 
 WORKDIR=$(pwd)
 
